@@ -1,4 +1,5 @@
-
+//To change ports, search Github "STM32 GPIO registers cheatsheet"
+//This code uses the PA13 PA14 ports freeing up PA13 (SWDIO) and PA14 (SWCLK) duties disableDebugPorts();
 
 
 #define PA14   PA14   // Serial Clock 
