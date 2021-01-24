@@ -40,11 +40,13 @@ byte rtc[8];
 void setup()
 { 
   disableDebugPorts();
-  Serial.begin(9600);for (int i=0; i<999; i+=2) Serial.println(i);
+  Serial.begin(9600);for (int i=0; i<999; i+=2) Serial.println(i);  //serial print warmup, while(!Serial) does not work
   rtcWr (0x8e, 0x00); rtcWr (0x90, 0x00);//  Enable clock /  Disable Trickle Charger.
   rtc[0]=0x32;  rtc[1]=0x00; rtc[2]=0x13; // seconds,min, hour
-  rtc[3]=0x23; rtc[4]=0x01;  rtc[5]=0x05; rtc[6]=0x21; //
-  for (byte i=0; i<7; i++) { rtcWr(0x80 | i*2,rtc[i]);  Serial.print(rtc[i],HEX); Serial.print("=");Serial.print(0x80|i*2,HEX); Serial.print(" "); }
+  rtc[3]=0x23; rtc[4]=0x01;  rtc[5]=0x05; rtc[6]=0x21; // date, month, day, year
+  for (byte i=0; i<7; i++) { rtcWr(0x80 | i*2,rtc[i]);  //array initial write
+                            Serial.print(rtc[i],HEX); Serial.print("=");Serial.print(0x80|i*2,HEX); Serial.print(" "); 
+                           }
   for (byte i=0; i<7; i+=2) rtc[i]=rtcRd(i+0x80);
 }
 
