@@ -1,5 +1,9 @@
-//To change ports, search Github "STM32 GPIO registers cheatsheet"
+//Follows the datasheet for absolute minimum of timer functions, easy to integrate in any code.
+
 //This code uses the PA13 PA14 ports freeing up PA13 (SWDIO) and PA14 (SWCLK) duties disableDebugPorts();
+//To change ports, search Github "STM32 GPIO registers cheatsheet"
+//Uses direct port access, probably just for fun, because the DS1302 needs 1 usec delays anyway.
+//Tried to avoid digitalWrite .. digitalRead 
 
 
 #define PA14   PA14   // Serial Clock 
