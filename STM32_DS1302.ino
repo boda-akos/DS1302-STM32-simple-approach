@@ -52,7 +52,6 @@ void setup()
   for (byte i=0; i<7; i++) { rtcWr(0x80 | i*2,rtc[i]);  //array initial write
                             Serial.print(rtc[i],HEX); Serial.print("=");Serial.print(0x80|i*2,HEX); Serial.print(" "); 
                            }
-  for (byte i=0; i<7; i+=2) rtc[i]=rtcRd(i+0x80);
 }
 
 
